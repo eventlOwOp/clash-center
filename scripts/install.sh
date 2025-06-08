@@ -13,8 +13,8 @@ VERSION="v1.0.0"
 INSTALL_DIR="/opt/clash-center"
 GITHUB_RELEASE_URL="https://github.com/eventlOwOp/clash-center/releases/download/${VERSION}"
 GITHUB_RAW_URL="https://github.com/eventlOwOp/clash-center/raw/refs/heads/master"
-SERVICE_FILE="/etc/systemd/system/${PROJECT_NAME}.service"
-BINARY="${INSTALL_DIR}/${PROJECT_NAME}"
+SERVICE_FILE="/etc/systemd/system/clash-center.service"
+BINARY="${INSTALL_DIR}/clash-center"
 MIHOMO_VERSION="v1.19.10"
 MIHOMO_URL="https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}"
 FRONTEND_DIST_URL="${GITHUB_RELEASE_URL}/dist.tar.gz"
@@ -96,6 +96,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
+WorkingDirectory=${INSTALL_DIR}
 ExecStart=${BINARY} -H 0.0.0.0 -p 7788
 Restart=on-failure
 RestartSec=5
@@ -288,7 +289,7 @@ install_clash_center() {
         exit 1
     fi
     
-    # 创建文件夹
+    # 创建配置文件夹
     mkdir -p "$INSTALL_DIR/configs"
     
     # 下载默认配置文件
@@ -306,11 +307,12 @@ install_clash_center() {
     
     print_msg "🎉 === 安装完成! === 🎉" "$GREEN"
     print_msg "🔧 可以通过以下命令管理服务:" "$BLUE"
-    print_msg "  ▶️ 启动: systemctl start ${PROJECT_NAME}" "$YELLOW"
-    print_msg "  ⏹️ 停止: systemctl stop ${PROJECT_NAME}" "$YELLOW"
-    print_msg "  🔄 重启: systemctl restart ${PROJECT_NAME}" "$YELLOW"
-    print_msg "  📊 状态: systemctl status ${PROJECT_NAME}" "$YELLOW"
-    print_msg "  📜 查看日志: journalctl -u ${PROJECT_NAME}" "$YELLOW"
+    print_msg "  ▶️ 启动: systemctl start clash-center" "$YELLOW"
+    print_msg "  ⏹️ 停止: systemctl stop clash-center" "$YELLOW"
+    print_msg "  🔄 重启: systemctl restart clash-center" "$YELLOW"
+    print_msg "  📊 状态: systemctl status clash-center" "$YELLOW"
+    print_msg "  📜 查看日志: journalctl -u clash-center" "$YELLOW"
+    print_msg "📁 配置文件目录: ${INSTALL_DIR}/configs (可以手动放入配置文件)" "$BLUE"
     print_msg "🌐 您可以通过访问 http://服务器IP:7788 来使用 Clash Center" "$GREEN"
 }
 
