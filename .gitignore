@@ -1,5 +1,7 @@
 configs/*
+!configs/.gitkeep
 clash/*
+!clash/.gitkeep
 
 clash-center*
 app_config.json
