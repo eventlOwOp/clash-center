@@ -102,6 +102,21 @@ sudo journalctl -u clash-center
     └── dist/          # Web frontend files
 ```
 
+## 📄 Default Configuration File
+
+The `default.yaml` file serves as a base configuration for Clash. It contains essential settings that override the corresponding parameters in your proxy configuration files:
+
+- 🌐 **DNS Settings**: Configure DNS servers and routing
+- 🔌 **TUN Mode**: Enable/disable and configure TUN mode
+- 🚪 **Ports Configuration**: HTTP/SOCKS5/mixed ports
+- 🎮 **API Configuration**: External controller address and port
+- 🔓 **LAN Access**: Allow connections from LAN devices
+- 🧩 **Other Core Settings**: Mode, log level, etc.
+
+This configuration ensures that critical system settings remain consistent regardless of which proxy configuration you're using. When you switch between different proxy configurations, these base settings will always be applied, while specific proxy settings (servers, rules) will be loaded from your selected configuration file.
+
+You can modify this file to customize how Clash operates on your system without altering your proxy configurations.
+
 ## ⚙️ Command Line Arguments
 
 Clash Center supports the following command line arguments:
