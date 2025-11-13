@@ -15,6 +15,9 @@
   <img src="https://img.shields.io/github/license/eventlOwOp/clash-center" alt="License" />
 </p>
 
+<img width="2596" height="1602" alt="image" src="https://github.com/user-attachments/assets/a6f5e1ac-59d8-4d3f-8605-cf3f723a3696" />
+
+
 ## ✨ 功能特点
 
 - 🌐 **网页管理界面**：通过清爽的Web界面管理Clash配置文件
